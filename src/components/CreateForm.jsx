@@ -10,9 +10,10 @@ export default function CreateForm({ setProduce, produce }) {
   });
 
   function handleChange(e) {
+    // if checkbox handle
     if (e.target.name == "stocked") {
       setFormData({ ...formData, stocked: e.target.checked });
-    } else {
+    } else { // if any other input handle
       setFormData({ ...formData, [e.target.name]: e.target.value });
     }
   }
@@ -21,10 +22,13 @@ export default function CreateForm({ setProduce, produce }) {
     try {
       e.preventDefault();
 
+      // post request to our server with formData as req.body
       let res = await axios.post("http://localhost:3000/api/produce", formData);
 
+      // create temp array from state with new value
       let temp = [...produce, res.data];
 
+      // sort temporary array
       let sorted = temp.sort((a, b) => {
         if (a.category < b.category) {
           return -1;
@@ -37,6 +41,7 @@ export default function CreateForm({ setProduce, produce }) {
         return 0;
       });
 
+      // set sorted array to state
       setProduce(sorted);
     } catch (err) {
       console.error(err.message);
