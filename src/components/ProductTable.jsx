@@ -8,6 +8,10 @@ export default function ProductTable({ formData }) {
   let category = null;
 
   products.forEach((product) => {
+    if (formData.inStock && !product.stocked) return;
+
+    if(!product.name.toLowerCase().includes(formData.searchText.toLowerCase())) return;
+
     // For every object, if OG category !== current objects category
     if (category !== product.category) {
       rows.push(

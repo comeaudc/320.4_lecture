@@ -1,6 +1,11 @@
 export default function SearchBar({ formData, setFormData }) {
+  
   function handleChange(e) {
-    console.log(e.target.value);
+    if (e.target.name == "searchText") {
+      setFormData({ ...formData, [e.target.name]: e.target.value });
+    } else {
+      setFormData({ ...formData, inStock: e.target.checked });
+    }
   }
 
   return (
