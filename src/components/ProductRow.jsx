@@ -1,7 +1,12 @@
-export default function ProductRow() {
+export default function ProductRow({ price, name, stocked }) {
+  let style = {
+    color: stocked ? "" : "red",
+  };
+
   return (
     <tr>
-      <td>ProductRow</td>
+      <td style={style}>{name}</td>
+      <td>{price}</td>
     </tr>
   );
 }
