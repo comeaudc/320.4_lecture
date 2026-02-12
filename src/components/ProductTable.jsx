@@ -2,7 +2,7 @@ import ProductCategoryRow from "./ProductCategoryRow.jsx";
 import ProductRow from "./ProductRow.jsx";
 import products from "../utilities/data.js";
 
-export default function ProductTable() {
+export default function ProductTable({ formData }) {
   let rows = [];
   // OG category = null
   let category = null;
