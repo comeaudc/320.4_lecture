@@ -36,7 +36,7 @@ function App() {
       ) : (
         <button onClick={getData}>Get Data</button>
       )}
-      <CreateForm />
+      <CreateForm setProduce={setProduce} produce={produce} />
     </>
   );
 }
